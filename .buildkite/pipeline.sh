@@ -19,6 +19,8 @@ steps:
       docker-compose#${BUILDKITE_COMMIT}:
         build: helloworld
         config: test/docker-compose.yml
+      lox/assert#d96f4d4:
+        test: docker images
   - wait
   - command: /hello
     label: run after build

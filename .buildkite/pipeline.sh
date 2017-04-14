@@ -20,46 +20,67 @@ steps:
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         run: alpinewithfailinglink
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
   - wait
   - command: /hello
     label: run
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         run: helloworld
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
   - wait
   - command: /hello
     label: build
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         build: helloworld
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
   - wait
   - command: /hello
     label: run after build
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         run: helloworld
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
   - wait
   - command: /hello
-    label: build with image name
+    label: build with image name (composefile v2.0)
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         build: helloworldimage
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
+  - wait
+  - command: /hello
+    label: build with image name (composefile v2.1)
+    plugins:
+      ${BUILDKITE_REPO}#${commit}:
+        build: helloworldimage
+        config: test/docker-compose.v2.1.yml
+  - wait
+  - command: /hello
+    label: build with image name (composefile v3.0)
+    plugins:
+      ${BUILDKITE_REPO}#${commit}:
+        build: helloworldimage
+        config: test/docker-compose.v3.0.yml
+  - wait
+  - command: /hello
+    label: run after build
+    plugins:
+      ${BUILDKITE_REPO}#${commit}:
+        run: helloworld
+        config: test/docker-compose.v2.0.yml
   - wait
   - command: /hello
     label: run after build with image name
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         run: helloworldimage
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
   - command: /hello
     label: run after build with image name and logs
     plugins:
       ${BUILDKITE_REPO}#${commit}:
         run: helloworldimage
-        config: test/docker-compose.yml
+        config: test/docker-compose.v2.0.yml
 YAML

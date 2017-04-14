@@ -58,13 +58,6 @@ steps:
         config: test/docker-compose.v2.1.yml
   - wait
   - command: /hello
-    label: build with image name (composefile v3.0)
-    plugins:
-      ${BUILDKITE_REPO}#${commit}:
-        build: helloworldimage
-        config: test/docker-compose.v3.0.yml
-  - wait
-  - command: /hello
     label: run after build
     plugins:
       ${BUILDKITE_REPO}#${commit}:

@@ -20,7 +20,7 @@ echo "~~~ :docker: Creating a modified Docker Compose config"
 # Override the config so that docker-compose automatically tags the image when built
 
 cat > $COMPOSE_SERVICE_OVERRIDE_FILE <<EOF
-version: '2'
+version: '$(docker_compose_config_version)'
 services:
   $BUILDKITE_PLUGIN_DOCKER_COMPOSE_BUILD:
     image: $TAG

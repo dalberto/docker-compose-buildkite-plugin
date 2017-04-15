@@ -48,7 +48,7 @@ try_image_restore_from_docker_repository() {
 
     # Override the config so that the service uses the restored image instead of building
     cat > $COMPOSE_SERVICE_OVERRIDE_FILE <<EOF
-version: '2'
+version: '$(docker_compose_config_version)'
 services:
   $COMPOSE_SERVICE_NAME:
     image: $tag
